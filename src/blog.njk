@@ -1,0 +1,28 @@
+---
+title: Blog
+layout: base.njk
+pagination :
+    data: collections.post
+    size: 6
+    reverse: true
+    alias: posts
+---
+
+<section>
+{% for post in posts%}
+    <div>
+        <h1>
+            <a href="{{post.url | url}}">{{post.data.title}}</a>
+        </h1>
+        <p class="pb-9">{{post.data.page.excerpt}}</p>
+    <div>
+{% endfor %}
+
+<header class="flex justify-between items-center">
+    <div class ="flex items-center gap-8">
+{%- for pageEntry in pagination.pages %}
+        <a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a>
+{%- endfor %}
+    </div>
+</header>
+</section>
