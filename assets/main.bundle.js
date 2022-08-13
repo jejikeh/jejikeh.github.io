@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _main_pcss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.pcss */ \"./src/_bundle/main.pcss\");\n\r\n\r\n// On page load or when changing themes, best to add inline in `head` to avoid FOUC\r\nif (\r\n    localStorage.theme === \"dark\" ||\r\n    (!(\"theme\" in localStorage) &&\r\n        window.matchMedia(\"(prefers-color-scheme: dark)\").matches)\r\n) {\r\n    document.documentElement.classList.add(\"dark\")\r\n    console.log(\"hello world dark\")\r\n} else {\r\n    document.documentElement.classList.remove(\"dark\")\r\n    console.log(\"hello world light\")\r\n}\r\n\n\n//# sourceURL=webpack://jejikeh/./src/_bundle/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _main_pcss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.pcss */ \"./src/_bundle/main.pcss\");\n\r\n\r\n// On page load or when changing themes, best to add inline in `head` to avoid FOUC\r\nif (\r\n    localStorage.theme === \"dark\" ||\r\n    (!(\"theme\" in localStorage) &&\r\n        window.matchMedia(\"(prefers-color-scheme: dark)\").matches)\r\n) {\r\n    document.documentElement.classList.add(\"dark\")\r\n} else {\r\n    document.documentElement.classList.remove(\"dark\")\r\n}\r\n\n\n//# sourceURL=webpack://jejikeh/./src/_bundle/main.js?");
 
 /***/ })
 
