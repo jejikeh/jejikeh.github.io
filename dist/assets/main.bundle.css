@@ -548,39 +548,15 @@ video {
     max-width: 1536px;
   }
 }
-.visible {
-  visibility: visible;
-}
-.static {
-  position: static;
-}
-.fixed {
-  position: fixed;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-.block {
-  display: block;
 }
 .inline {
   display: inline;
 }
 .flex {
   display: flex;
-}
-.table {
-  display: table;
-}
-.grid {
-  display: grid;
-}
-.hidden {
-  display: none;
-}
-.w-32 {
-  width: 8rem;
 }
 .w-64 {
   width: 16rem;
@@ -590,12 +566,6 @@ video {
 }
 .flex-grow {
   flex-grow: 1;
-}
-.transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.resize {
-  resize: both;
 }
 .flex-col {
   flex-direction: column;
@@ -611,11 +581,6 @@ video {
 }
 .gap-8 {
   gap: 2rem;
-}
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .rounded-full {
   border-radius: 9999px;
@@ -633,13 +598,6 @@ video {
 .font-lora {
   font-family: Lora, sans-serif;
 }
-.italic {
-  font-style: italic;
-}
-.ordinal {
-  --tw-ordinal: ordinal;
-  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
-}
 .text-gray {
   --tw-text-opacity: 1;
   color: rgb(150 150 150 / var(--tw-text-opacity));
@@ -647,31 +605,6 @@ video {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(38 34 34 / var(--tw-text-opacity));
-}
-.underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
-}
-.outline {
-  outline-style: solid;
-}
-.ring {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-.invert {
-  --tw-invert: invert(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-.\[_\:\\\.\\-\\\^\\\+\~\\\*\=\] {
-  _: \.\-\^\+~\*=;
-}
-.\[-\:\=\] {
-  -: =;
 }
 @font-face {
     font-family: "Lora";
