@@ -1,0 +1,18 @@
+<p>Helix is a postmodern text editor that is very similar to vim, but written in Rust and has more convenient shortcuts.</p>
+<h1>Helix, Rust, C#</h1>
+<p><a href="https://helix-editor.com/">Helix</a> is a postmodern text editor that is very similar to vim, but written in Rust and has more convenient shortcuts.</p>
+<h2>Install Helix</h2>
+<p>To assemble the Helix yourself, you need to do the following in the terminal:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/helix-editor/helix<br><span class="token builtin class-name">cd</span> helix<br>cargo <span class="token function">install</span> --path helix-term</code></pre>
+<p>This is only the editor itself to install, it still needs to install language support. To check the Helix status, insert the following into the terminal:</p>
+<pre class="language-bash"><code class="language-bash">hx --health<br><br><span class="token comment"># build tree-sitter grammars</span><br>hx --grammar fetch<br>hx --grammar build</code></pre>
+<p>These commands will install the necessary files in the runtime folder so that helix can access it, copy its contents to <code>%AppData%/helix/runtime</code></p>
+<h2>Install OmniSharp</h2>
+<p>OmniSharp is a .NET development platform based on <a href="https://github.com/dotnet/roslyn">Roslyn</a>
+ workspaces. It provides project dependencies and C# language services to various IDEs and plugins.</p>
+<p>To install Omnisharp you need to download binaries for your system: <a href="https://github.com/OmniSharp/omnisharp-roslyn/releases/tag/v1.39.1">Release</a>, and then add binaries to your system path.</p>
+<h2>Install rust-analyzer</h2>
+<p>At its core, rust-analyzer is a <strong>library</strong> for semantic analysis of Rust code as it changes over time. This manual focuses on a specific usage of the library — running it as part of a server that implements the <a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a>(LSP). The LSP allows various code editors, like VS Code, Emacs or Vim, to implement semantic features like completion or goto definition by talking to an external language server process.</p>
+<p>Build from source:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/rust-lang/rust-analyzer.git<br><span class="token builtin class-name">cd</span> rust-analyzer<br>cargo xtask <span class="token function">install</span> --server</code></pre>
+<p>Now you can run <code>hx</code>.</p>
