@@ -1,3 +1,10 @@
+---
+title: Helix, Rust, C#
+pageTitle: helix
+layout: "post.njk"
+tags: ["post"]
+---
+
 Helix is a postmodern text editor that is very similar to vim, but written in Rust and has more convenient shortcuts.
 
 <!-- excerpt -->
