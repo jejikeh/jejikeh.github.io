@@ -561,8 +561,8 @@ video {
 .w-64 {
   width: 16rem;
 }
-.max-w-3xl {
-  max-width: 48rem;
+.max-w-4xl {
+  max-width: 56rem;
 }
 .flex-grow {
   flex-grow: 1;
@@ -604,7 +604,7 @@ video {
 }
 .text-black {
   --tw-text-opacity: 1;
-  color: rgb(38 34 34 / var(--tw-text-opacity));
+  color: rgb(13 12 12 / var(--tw-text-opacity));
 }
 @font-face {
     font-family: "Lora";
@@ -633,6 +633,9 @@ p {
 }
 html {
     zoom: 77%;
+}
+.post a {
+    color: #e53d3d;
 }
 /**
  * Gruvbox light theme
@@ -762,7 +765,7 @@ pre[class*="language-"] {
 }
 .dark .dark\:bg-black {
   --tw-bg-opacity: 1;
-  background-color: rgb(38 34 34 / var(--tw-bg-opacity));
+  background-color: rgb(13 12 12 / var(--tw-bg-opacity));
 }
 .dark .dark\:text-white {
   --tw-text-opacity: 1;
