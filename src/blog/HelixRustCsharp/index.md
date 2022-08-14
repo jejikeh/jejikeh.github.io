@@ -9,10 +9,6 @@ Helix is a postmodern text editor that is very similar to vim, but written in Ru
 
 <!-- excerpt -->
 
-# Helix, Rust, C#
-
-[Helix](https://helix-editor.com/) is a postmodern text editor that is very similar to vim, but written in Rust and has more convenient shortcuts.
-
 ## Install Helix
 
 To assemble the Helix yourself, you need to do the following in the terminal:
