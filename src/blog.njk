@@ -10,10 +10,12 @@ pagination :
 
 <section>
 {% for post in posts%}
-    <div>
-        <h1>
+    <div class="">
+        <div class="post">
+        <h2>
             <a href="{{post.url | url}}">{{post.data.title}}</a>
-        </h1>
+        </h2>
+        </div>
         <p class="pb-9">{{post.data.page.excerpt}}</p>
     <div>
 {% endfor %}
