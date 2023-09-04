@@ -1,24 +1,24 @@
 module.exports = {
-    darkMode: "class",
-    theme: {
-        container: {
-            center: true,
-            padding: "0rem",
-        },
-        extend: {
-            colors: {
-                white: "#F5F2F2",
-                black: "#0D0C0C",
-                gray: "#969696",
-            },
-            fontFamily: {
-                lora: ["Lora", "sans-serif"],
-            },
-        },
+  darkMode: "class",
+  theme: {
+    container: {
+      center: false,
+      padding: "0rem",
     },
-    variants: {
-        extend: {},
+    extend: {
+      colors: {
+        white: "#F5F2F2",
+        black: "#000000",
+        gray: "#969696",
+      },
+      fontFamily: {
+        lora: ["Inter", "sans-serif"],
+      },
     },
-    plugins: [require("@tailwindcss/typography")],
-    purge: ["./src/**/*.js", "./src/**/*.njk", "./src/**/*.svg"],
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [require("@tailwindcss/typography")],
+  purge: ["./src/**/*.js", "./src/**/*.njk", "./src/**/*.svg"],
 }
