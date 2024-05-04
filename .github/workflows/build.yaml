@@ -38,7 +38,7 @@ jobs:
           git checkout -b gh-pages
           git add -A
           git commit -m "Update site"
-          git push origin gh-pages
+          git push -f origin gh-pages
 
       #   - name: Push Changes
       #     uses: ad-m/github-push-action@master
