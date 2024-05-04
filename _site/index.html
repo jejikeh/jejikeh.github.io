@@ -1,0 +1,207 @@
+<h1> Yauheni Lantsau</h1>
+<p><a href="https://github.com/jejikeh">github</a> | <a href="https://www.linkedin.com/in/jejikehx/">linkedin</a> | <a href="https://t.me/jejikeh">telegram</a></p>
+<p>This is my test page.</p>
+<h2> tinymd</h2>
+<p>This is a test for <a href="https://github.com/jejikeh/tinymd">tinymd</a>. </p>
+<p><a href="https://github.com/jejikeh/tinymd">Tinymd</a> is a simple mardown compiler.</p>
+<h2> Source</h2>
+<p>This is the source code of the program provided bellow.</p>
+<pre><code>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+
+#define OPEN_TAG 0
+#define CONTENT 1
+#define CLOSE_TAG 2
+
+typedef std::string tag[3];
+
+static void close_tag(tag current_tag, std::string* result) {
+    if (current_tag[CONTENT].empty()) {
+        return;
+    }
+    if (current_tag[OPEN_TAG].empty()) {
+        current_tag[OPEN_TAG] = "<p>";
+        current_tag[CLOSE_TAG] = "</p>";
+    }
+
+    result->append(current_tag[OPEN_TAG] + current_tag[CONTENT] +
+                   current_tag[CLOSE_TAG] + "\n");
+
+    current_tag[OPEN_TAG] = "";
+    current_tag[CONTENT] = "";
+    current_tag[CLOSE_TAG] = "";
+}
+
+static std::string render_html(const std::string& content) {
+    std::string result;
+    tag current_tag = {"", "", ""};
+    // @Incomplete(jejikeh): maybe i can use std::format here, to just replace
+    // the 3 arrays. Then I could handle 'children' situations, maybe?
+
+    for (std::int32_t i = 0; i < content.size(); i++) {
+        if (content[i] == '#') {
+            std::int32_t heading_level = 0;
+            while (content[i] == '#' && i < content.size()) {
+                i++;
+                heading_level++;
+            }
+
+            current_tag[OPEN_TAG] = "<h" + std::to_string(heading_level) + ">";
+            current_tag[CLOSE_TAG] =
+                "</h" + std::to_string(heading_level) + ">";
+        }
+
+        if (content[i] == '*') {
+            if (i + 1 < content.size() && content[i + 1] != ' ') {
+                current_tag[CONTENT] += " <em>";
+                i++;
+
+                while (i < content.size() && content[i] != '*') {
+                    current_tag[CONTENT] += content[i];
+                    i++;
+                }
+
+                current_tag[CONTENT] += "</em> ";
+                i++;
+            }
+
+            continue;
+        }
+
+        if (content[i] == '`') {
+            close_tag(current_tag, &result);
+
+            if (i + 2 >= content.size() || content[i + 1] != '`' ||
+                content[i + 2] != '`') {
+                continue;
+            }
+
+            current_tag[OPEN_TAG] = "<pre><code>";
+            current_tag[CLOSE_TAG] = "</code></pre>";
+
+            i += 3;
+
+            while (i + 2 < content.size() &&
+                   !(content[i] == '`' && content[i + 1] == '`' &&
+                     content[i + 2] == '`')) {
+                current_tag[CONTENT] += content[i];
+                i++;
+            }
+
+            i += 3;
+
+            close_tag(current_tag, &result);
+
+            continue;
+        }
+
+        if (content[i] == '[') {
+            std::string link_text, link_url = "";
+            current_tag[CONTENT] += " <a href=\"";
+            i++;
+            while (content[i] != ']') {
+                link_text += content[i];
+                i++;
+            }
+            i += 2;
+            while (content[i] != ')') {
+                link_url += content[i];
+                i++;
+            }
+            i++;
+
+            current_tag[CONTENT] += link_url + "\">" + link_text + "</a> ";
+
+            continue;
+        }
+
+        if (content[i] == '\n') {
+            close_tag(current_tag, &result);
+            continue;
+        }
+
+        current_tag[CONTENT] += content[i];
+    }
+
+    close_tag(current_tag, &result);
+
+    return result;
+}
+
+static std::string read_file(const std::string& path) {
+    std::ifstream file(path);
+
+    if (!file.is_open()) {
+        return "";
+    }
+
+    std::string result;
+    std::string line;
+
+    while (std::getline(file, line)) {
+        result += line + "\n";
+    }
+
+    file.close();
+
+    return result;
+}
+
+static void save_file(const std::string& path, const std::string& content) {
+    std::ofstream file(path);
+
+    if (!file.is_open()) {
+        return;
+    }
+
+    file << content;
+
+    file.close();
+}
+
+static void walk_over_files_and_parse(const std::string& input_path,
+                                      const std::string& output_path) {
+    const auto path = std::filesystem::path(input_path);
+
+    for (const auto& entry : std::filesystem::directory_iterator(path)) {
+        std::cout << entry.path() << std::endl;
+        if (std::filesystem::is_directory(entry.path())) {
+            walk_over_files_and_parse(
+                entry.path().string(),
+                output_path + entry.path().filename().string() + "/");
+        } else {
+            const auto file_content = read_file(entry.path().string());
+            const auto render = render_html(file_content);
+            save_file(output_path + entry.path().filename().string() + ".html",
+                      render);
+        }
+    }
+}
+
+int main(int argc, char* argv[]) {
+    if (argc < 3) {
+        std::cerr << "Usage: " << argv[0] << " <string> <string>" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::string input_path = argv[1];
+
+    if (!std::filesystem::exists(input_path) ||
+        !std::filesystem::is_directory(input_path)) {
+        std::cerr << "No such file or directory: " << input_path << std::endl;
+    }
+
+    std::string output_path = argv[2];
+
+    if (!std::filesystem::exists(output_path) ||
+        !std::filesystem::is_directory(output_path)) {
+        std::filesystem::create_directory(output_path);
+    }
+
+    walk_over_files_and_parse(input_path, output_path);
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
