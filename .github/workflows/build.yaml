@@ -29,7 +29,8 @@ jobs:
 
       - name: Generate HTML Files
         run: |
-          ./build/tinymd ../src/ ../_site
+          cd tinymd/build
+          ./tinymd ../../src/ ../../_site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
