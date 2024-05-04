@@ -38,12 +38,13 @@ jobs:
           git checkout -b gh-pages
           git add -A
           git commit -m "Update site"
+          git push origin gh-pages
 
-      - name: Push Changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
+      #   - name: Push Changes
+      #     uses: ad-m/github-push-action@master
+      #     with:
+      #       github_token: ${{ secrets.GITHUB_TOKEN }}
+      #       branch: gh-pages
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
