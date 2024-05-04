@@ -14,8 +14,6 @@ This is a test for [tinymd](https://github.com/jejikeh/tinymd).
 
 This is the source code of the program provided bellow.
 
-4 May 2024 4:04 AM
-
 ```
 #include <filesystem>
 #include <fstream>
