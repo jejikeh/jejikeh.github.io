@@ -20,6 +20,7 @@ jobs:
       - name: Build C++ Program
         run: |
           git submodule update --init
+          git submodule foreach git pull origin main
           cd tinymd
           mkdir build
           cd build
