@@ -29,7 +29,7 @@ jobs:
       - name: Generate HTML Files
         run: |
           cd tinymd/build
-          ./tinymd ../../src/ ../../_site
+          ./tinymd ../../src/ ../../_site/
 
       - name: Commit Files
         run: |
